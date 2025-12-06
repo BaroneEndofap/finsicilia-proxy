@@ -1,7 +1,5 @@
-import fetch from "node-fetch";
-
 export default async function handler(req, res) {
-  const id = req.query.id;
+  const { id } = req.query;
 
   if (!id) {
     return res.status(400).send("Missing id");
@@ -22,8 +20,8 @@ export default async function handler(req, res) {
     res.setHeader("Access-Control-Allow-Origin", "*");
     return res.status(200).send(html);
 
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error(error);
     return res.status(500).send("Proxy error");
   }
 }
